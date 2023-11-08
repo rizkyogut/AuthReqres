@@ -1,20 +1,19 @@
 package com.rizkym.authreqres
 
 import androidx.lifecycle.ViewModel
-import androidx.lifecycle.asLiveData
 import androidx.lifecycle.viewModelScope
-import com.rizkym.authreqres.utils.UserPreferences
+import com.rizkym.authreqres.remote.RepositoryAuth
 import kotlinx.coroutines.launch
 
-class MainViewModel(private val preferences: UserPreferences): ViewModel()  {
+class MainViewModel(private val repository: RepositoryAuth): ViewModel()  {
 
     fun logout() = deleteUserKey()
 
     private fun deleteUserKey(){
         viewModelScope.launch {
-            preferences.deleteUserKey()
+            repository.deleteUserKey()
         }
     }
 
-    fun getUserKey() = preferences.getUserKey().asLiveData()
+    fun getUserKey() = repository.getUserKey()
 }
