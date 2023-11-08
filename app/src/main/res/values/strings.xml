@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">Authreqres</string>
+    <string name="login">Login</string>
+    <string name="password">Password</string>
+    <string name="email">Email</string>
+    <string name="check_input">Check your input</string>
+    <string name="name">Name</string>
+    <string name="retry">Retry</string>
+
+    <string name="imageview">Image View</string>
+    <string name="logout">Logout</string>
+    <string name="logout_alert">Completed to Logout</string>
+</resources>
