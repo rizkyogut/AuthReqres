@@ -12,7 +12,7 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class RepositoryAuth(
+class AuthRepository(
     private val preferences: UserPreferences
 ) {
     private val _login = MutableLiveData<Result<String>>()
@@ -45,8 +45,10 @@ class RepositoryAuth(
 
         return _login
     }
-    
-    suspend fun deleteUserKey() = preferences.deleteUserKey()
+
+    suspend fun saveUser(token: String) = preferences.saveUser(token)
 
     fun getUserKey() = preferences.getUserKey().asLiveData()
+
+    suspend fun deleteUserKey() = preferences.deleteUserKey()
 }

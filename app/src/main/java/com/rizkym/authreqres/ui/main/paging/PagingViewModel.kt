@@ -1,4 +1,4 @@
-package com.rizkym.authreqres.paging
+package com.rizkym.authreqres.ui.main.paging
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
