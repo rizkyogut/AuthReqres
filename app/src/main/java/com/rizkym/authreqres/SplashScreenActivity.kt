@@ -11,9 +11,10 @@ import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.Preferences
 import androidx.datastore.preferences.preferencesDataStore
 import androidx.lifecycle.ViewModelProvider
-import com.rizkym.authreqres.auth.LoginActivity
-import com.rizkym.authreqres.remote.Repository
-import com.rizkym.authreqres.remote.RepositoryAuth
+import com.rizkym.authreqres.ui.auth.LoginActivity
+import com.rizkym.authreqres.remote.AuthRepository
+import com.rizkym.authreqres.ui.main.MainActivity
+import com.rizkym.authreqres.ui.main.MainViewModel
 import com.rizkym.authreqres.utils.UserPreferences
 import com.rizkym.authreqres.utils.ViewModelFactory
 
@@ -44,7 +45,7 @@ class SplashScreenActivity : AppCompatActivity() {
 
     private fun setupViewModel() {
         val pref = UserPreferences.getInstance(dataStore)
-        val repository = RepositoryAuth(pref)
+        val repository = AuthRepository(pref)
         mainViewModel = ViewModelProvider(this, ViewModelFactory(repository))[MainViewModel::class.java]
     }
 

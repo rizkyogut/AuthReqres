@@ -3,12 +3,13 @@ package com.rizkym.authreqres.utils
 import android.app.Application
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.rizkym.authreqres.MainViewModel
-import com.rizkym.authreqres.auth.LoginViewModel
-import com.rizkym.authreqres.remote.Repository
-import com.rizkym.authreqres.remote.RepositoryAuth
+import com.rizkym.authreqres.ui.main.MainViewModel
+import com.rizkym.authreqres.ui.auth.LoginViewModel
+import com.rizkym.authreqres.remote.AuthRepository
 
-class ViewModelFactory(private val repository: RepositoryAuth) :
+class ViewModelFactory(
+    private val repository: AuthRepository,
+) :
     ViewModelProvider.NewInstanceFactory() {
 
     private lateinit var mApplication: Application

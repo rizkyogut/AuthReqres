@@ -1,4 +1,4 @@
-package com.rizkym.authreqres
+package com.rizkym.authreqres.ui.main
 
 import android.content.Context
 import android.content.Intent
@@ -13,13 +13,13 @@ import androidx.datastore.preferences.core.Preferences
 import androidx.datastore.preferences.preferencesDataStore
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.rizkym.authreqres.auth.LoginActivity
+import com.rizkym.authreqres.R
+import com.rizkym.authreqres.ui.auth.LoginActivity
 import com.rizkym.authreqres.databinding.ActivityMainBinding
-import com.rizkym.authreqres.paging.LoadingStateAdapter
-import com.rizkym.authreqres.paging.PagingViewModel
-import com.rizkym.authreqres.paging.UserListAdapter
-import com.rizkym.authreqres.remote.Repository
-import com.rizkym.authreqres.remote.RepositoryAuth
+import com.rizkym.authreqres.ui.main.paging.LoadingStateAdapter
+import com.rizkym.authreqres.ui.main.paging.PagingViewModel
+import com.rizkym.authreqres.ui.main.paging.UserListAdapter
+import com.rizkym.authreqres.remote.AuthRepository
 import com.rizkym.authreqres.utils.UserPreferences
 import com.rizkym.authreqres.utils.ViewModelFactory
 
@@ -49,7 +49,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun setupViewModel() {
         val preferences = UserPreferences.getInstance(dataStore)
-        val repository = RepositoryAuth(preferences)
+        val repository = AuthRepository(preferences)
         val viewModelFactory = ViewModelFactory(repository)
         viewModelFactory.setApplication(application)
         mainViewModel = ViewModelProvider(this, viewModelFactory)[MainViewModel::class.java]
