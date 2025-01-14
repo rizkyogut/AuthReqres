@@ -1,4 +1,4 @@
-package com.rizkym.authreqres.remote.config
+package com.rizkym.authreqres.network.config
 
 import com.rizkym.authreqres.BuildConfig
 import okhttp3.OkHttpClient

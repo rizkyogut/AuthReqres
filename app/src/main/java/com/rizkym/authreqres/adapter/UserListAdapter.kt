@@ -1,4 +1,4 @@
-package com.rizkym.authreqres.paging
+package com.rizkym.authreqres.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -7,7 +7,7 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.rizkym.authreqres.databinding.ItemUserBinding
-import com.rizkym.authreqres.remote.response.DataItem
+import com.rizkym.authreqres.network.response.DataItem
 
 class UserListAdapter : PagingDataAdapter<DataItem, UserListAdapter.MyViewHolder>(DIFF_CALLBACK) {
 

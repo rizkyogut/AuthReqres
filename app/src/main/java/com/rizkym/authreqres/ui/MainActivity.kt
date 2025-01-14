@@ -1,4 +1,4 @@
-package com.rizkym.authreqres
+package com.rizkym.authreqres.ui
 
 import android.content.Context
 import android.content.Intent
@@ -11,25 +11,21 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.Preferences
 import androidx.datastore.preferences.preferencesDataStore
-import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.rizkym.authreqres.R
+import com.rizkym.authreqres.adapter.LoadingStateAdapter
+import com.rizkym.authreqres.adapter.UserListAdapter
 import com.rizkym.authreqres.databinding.ActivityMainBinding
-import com.rizkym.authreqres.auth.LoginActivity
-import com.rizkym.authreqres.paging.LoadingStateAdapter
-import com.rizkym.authreqres.paging.PagingViewModel
-import com.rizkym.authreqres.paging.UserListAdapter
+import com.rizkym.authreqres.ui.auth.LoginActivity
 import com.rizkym.authreqres.utils.UserPreferences
-import com.rizkym.authreqres.utils.ViewModelFactory
 
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
-    private lateinit var mainViewModel: MainViewModel
 
     private val Context.dataStore: DataStore<Preferences> by preferencesDataStore(name = "user_key")
-    private val pagingViewModel: PagingViewModel by viewModels {
-        PagingViewModel.ViewModelFactory()
+    private val mainViewModel: MainViewModel by viewModels {
+        ViewModelFactory(this, UserPreferences.getInstance(dataStore))
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -47,10 +43,10 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun setupViewModel() {
-        val preferences = UserPreferences.getInstance(dataStore)
-        val viewModelFactory = ViewModelFactory(preferences)
-        viewModelFactory.setApplication(application)
-        mainViewModel = ViewModelProvider(this, viewModelFactory)[MainViewModel::class.java]
+//        val preferences = UserPreferences.getInstance(dataStore)
+//        val viewModelFactory = ViewModelFactory(preferences)
+//        viewModelFactory.setApplication(application)
+//        mainViewModel = ViewModelProvider(this, viewModelFactory)[MainViewModel::class.java]
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
@@ -80,7 +76,7 @@ class MainActivity : AppCompatActivity() {
                 adapter.retry()
             }
         )
-        pagingViewModel.getPagingUsers().observe(this) {
+        mainViewModel.quota.observe(this) {
             adapter.submitData(lifecycle, it)
         }
     }

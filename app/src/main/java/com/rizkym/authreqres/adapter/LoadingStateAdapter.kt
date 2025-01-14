@@ -1,4 +1,4 @@
-package com.rizkym.authreqres.paging
+package com.rizkym.authreqres.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup

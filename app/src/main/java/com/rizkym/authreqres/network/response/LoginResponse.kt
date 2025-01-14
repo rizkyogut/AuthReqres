@@ -1,4 +1,4 @@
-package com.rizkym.authreqres.remote.response
+package com.rizkym.authreqres.network.response
 
 import com.google.gson.annotations.SerializedName
 

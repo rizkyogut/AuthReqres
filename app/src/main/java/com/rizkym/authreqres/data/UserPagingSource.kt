@@ -1,11 +1,12 @@
-package com.rizkym.authreqres.paging
+package com.rizkym.authreqres.data
 
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
-import com.rizkym.authreqres.remote.config.ApiConfig
-import com.rizkym.authreqres.remote.response.DataItem
+import com.rizkym.authreqres.network.config.ApiConfig
+import com.rizkym.authreqres.network.config.ApiService
+import com.rizkym.authreqres.network.response.DataItem
 
-class UserPagingSource() : PagingSource<Int, DataItem>() {
+class UserPagingSource(private val apiService: ApiService) : PagingSource<Int, DataItem>() {
 
     private companion object {
         const val INITIAL_PAGE_INDEX = 1
@@ -21,7 +22,7 @@ class UserPagingSource() : PagingSource<Int, DataItem>() {
     override suspend fun load(params: LoadParams<Int>): LoadResult<Int, DataItem> {
         return try {
             val page = params.key ?: INITIAL_PAGE_INDEX
-            val responseData = ApiConfig.getApiService()
+            val responseData = apiService
                 .getUsersPages(page, params.loadSize)
 
             LoadResult.Page(

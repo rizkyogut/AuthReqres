@@ -1,13 +1,13 @@
-package com.rizkym.authreqres.auth
+package com.rizkym.authreqres.ui.auth
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.rizkym.authreqres.remote.Result
-import com.rizkym.authreqres.remote.config.ApiConfig
-import com.rizkym.authreqres.remote.response.LoginRequest
-import com.rizkym.authreqres.remote.response.LoginResponse
+import com.rizkym.authreqres.network.Result
+import com.rizkym.authreqres.network.config.ApiConfig
+import com.rizkym.authreqres.network.response.LoginRequest
+import com.rizkym.authreqres.network.response.LoginResponse
 import com.rizkym.authreqres.utils.UserPreferences
 import kotlinx.coroutines.launch
 import org.json.JSONObject

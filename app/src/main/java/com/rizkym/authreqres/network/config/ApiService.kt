@@ -1,8 +1,8 @@
-package com.rizkym.authreqres.remote.config
+package com.rizkym.authreqres.network.config
 
-import com.rizkym.authreqres.remote.response.LoginRequest
-import com.rizkym.authreqres.remote.response.LoginResponse
-import com.rizkym.authreqres.remote.response.UserResponse
+import com.rizkym.authreqres.network.response.LoginRequest
+import com.rizkym.authreqres.network.response.LoginResponse
+import com.rizkym.authreqres.network.response.UserResponse
 import retrofit2.Call
 import retrofit2.http.*
 
