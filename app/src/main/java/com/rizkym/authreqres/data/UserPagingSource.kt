@@ -2,7 +2,6 @@ package com.rizkym.authreqres.data
 
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
-import com.rizkym.authreqres.network.config.ApiConfig
 import com.rizkym.authreqres.network.config.ApiService
 import com.rizkym.authreqres.network.response.DataItem
 

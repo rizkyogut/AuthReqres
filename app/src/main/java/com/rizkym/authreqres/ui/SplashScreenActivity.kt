@@ -13,6 +13,9 @@ import androidx.datastore.preferences.preferencesDataStore
 import androidx.lifecycle.ViewModelProvider
 import com.rizkym.authreqres.R
 import com.rizkym.authreqres.ui.auth.LoginActivity
+import com.rizkym.authreqres.ui.main.MainActivity
+import com.rizkym.authreqres.ui.main.MainViewModel
+import com.rizkym.authreqres.ui.main.ViewModelFactory
 import com.rizkym.authreqres.utils.UserPreferences
 
 @SuppressLint("CustomSplashScreen")

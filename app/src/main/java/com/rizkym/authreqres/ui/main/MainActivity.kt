@@ -1,4 +1,4 @@
-package com.rizkym.authreqres.ui
+package com.rizkym.authreqres.ui.main
 
 import android.content.Context
 import android.content.Intent
@@ -17,6 +17,7 @@ import com.rizkym.authreqres.adapter.LoadingStateAdapter
 import com.rizkym.authreqres.adapter.UserListAdapter
 import com.rizkym.authreqres.databinding.ActivityMainBinding
 import com.rizkym.authreqres.ui.auth.LoginActivity
+
 import com.rizkym.authreqres.utils.UserPreferences
 
 class MainActivity : AppCompatActivity() {
@@ -33,8 +34,6 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        setupViewModel()
-
         setSupportActionBar(binding.toolbar)
 
         binding.rvUser.layoutManager = LinearLayoutManager(this)
@@ -42,12 +41,6 @@ class MainActivity : AppCompatActivity() {
         getData()
     }
 
-    private fun setupViewModel() {
-//        val preferences = UserPreferences.getInstance(dataStore)
-//        val viewModelFactory = ViewModelFactory(preferences)
-//        viewModelFactory.setApplication(application)
-//        mainViewModel = ViewModelProvider(this, viewModelFactory)[MainViewModel::class.java]
-    }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         val inflater = menuInflater
@@ -76,7 +69,7 @@ class MainActivity : AppCompatActivity() {
                 adapter.retry()
             }
         )
-        mainViewModel.quota.observe(this) {
+        mainViewModel.user.observe(this) {
             adapter.submitData(lifecycle, it)
         }
     }

@@ -11,9 +11,9 @@ import androidx.datastore.preferences.core.Preferences
 import androidx.datastore.preferences.preferencesDataStore
 import androidx.lifecycle.ViewModelProvider
 import com.rizkym.authreqres.databinding.ActivityLoginBinding
-import com.rizkym.authreqres.ui.MainActivity
 import com.rizkym.authreqres.network.Result
-import com.rizkym.authreqres.ui.ViewModelFactory
+import com.rizkym.authreqres.ui.main.ViewModelFactory
+import com.rizkym.authreqres.ui.main.MainActivity
 import com.rizkym.authreqres.utils.UserPreferences
 
 class LoginActivity : AppCompatActivity(), View.OnClickListener {

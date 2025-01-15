@@ -1,11 +1,5 @@
 package com.rizkym.authreqres.utils
 
-import android.app.Application
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.ViewModelProvider
-import com.rizkym.authreqres.ui.MainViewModel
-import com.rizkym.authreqres.ui.auth.LoginViewModel
-
 //class ViewModelFactory(private val preferences: UserPreferences) :
 //    ViewModelProvider.NewInstanceFactory() {
 //    private lateinit var mApplication: Application

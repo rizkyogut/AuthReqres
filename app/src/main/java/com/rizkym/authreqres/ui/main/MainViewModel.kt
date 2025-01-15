@@ -1,4 +1,4 @@
-package com.rizkym.authreqres.ui
+package com.rizkym.authreqres.ui.main
 
 import android.content.Context
 import androidx.lifecycle.LiveData
@@ -28,9 +28,10 @@ class MainViewModel(private val preferences: UserPreferences, userRepository: Us
 
     fun getUserKey() = preferences.getUserKey().asLiveData()
 
-    val quota: LiveData<PagingData<DataItem>> = userRepository.getUser().cachedIn(viewModelScope)
+    val user: LiveData<PagingData<DataItem>> = userRepository.getUser().cachedIn(viewModelScope)
 }
 
+@Suppress("UNCHECKED_CAST")
 class ViewModelFactory(private val context: Context, private val preferences: UserPreferences) :
     ViewModelProvider.Factory {
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
