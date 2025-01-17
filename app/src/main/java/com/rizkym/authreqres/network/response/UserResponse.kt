@@ -1,5 +1,7 @@
-package com.rizkym.authreqres.remote.response
+package com.rizkym.authreqres.network.response
 
+import androidx.room.Entity
+import androidx.room.PrimaryKey
 import com.google.gson.annotations.SerializedName
 
 data class UserResponse(
@@ -20,20 +22,3 @@ data class UserResponse(
 	val totalPages: Int? = null
 )
 
-data class DataItem(
-
-	@field:SerializedName("last_name")
-	val lastName: String? = null,
-
-	@field:SerializedName("id")
-	val id: Int? = null,
-
-	@field:SerializedName("avatar")
-	val avatar: String? = null,
-
-	@field:SerializedName("first_name")
-	val firstName: String? = null,
-
-	@field:SerializedName("email")
-	val email: String? = null
-)

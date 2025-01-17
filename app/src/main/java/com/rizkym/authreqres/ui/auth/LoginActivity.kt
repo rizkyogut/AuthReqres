@@ -1,4 +1,4 @@
-package com.rizkym.authreqres.auth
+package com.rizkym.authreqres.ui.auth
 
 import android.content.Context
 import android.content.Intent
@@ -11,10 +11,10 @@ import androidx.datastore.preferences.core.Preferences
 import androidx.datastore.preferences.preferencesDataStore
 import androidx.lifecycle.ViewModelProvider
 import com.rizkym.authreqres.databinding.ActivityLoginBinding
-import com.rizkym.authreqres.MainActivity
-import com.rizkym.authreqres.remote.Result
+import com.rizkym.authreqres.network.Result
+import com.rizkym.authreqres.ui.main.ViewModelFactory
+import com.rizkym.authreqres.ui.main.MainActivity
 import com.rizkym.authreqres.utils.UserPreferences
-import com.rizkym.authreqres.utils.ViewModelFactory
 
 class LoginActivity : AppCompatActivity(), View.OnClickListener {
 
@@ -33,7 +33,9 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener {
 
     private fun setupViewModel() {
         val pref = UserPreferences.getInstance(dataStore)
-        loginViewModel = ViewModelProvider(this, ViewModelFactory(pref))[LoginViewModel::class.java]
+        val factory = ViewModelFactory(this, pref)
+        loginViewModel = ViewModelProvider(this, factory)[LoginViewModel::class.java]
+
         loginViewModel.login.observe(this) {
             when (it) {
                 is Result.Loading -> showLoading(true)
@@ -41,10 +43,12 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener {
                     showLoading(false)
                     startActivity(Intent(this, MainActivity::class.java))
                 }
+
                 is Result.Error -> {
                     Toast.makeText(this, it.message, Toast.LENGTH_SHORT).show()
                     showLoading(false)
                 }
+
                 else -> throw AssertionError()
             }
         }

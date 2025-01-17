@@ -1,4 +1,4 @@
-package com.rizkym.authreqres
+package com.rizkym.authreqres.ui
 
 import android.annotation.SuppressLint
 import android.content.Context
@@ -12,9 +12,11 @@ import androidx.datastore.preferences.core.Preferences
 import androidx.datastore.preferences.preferencesDataStore
 import androidx.lifecycle.ViewModelProvider
 import com.rizkym.authreqres.R
-import com.rizkym.authreqres.auth.LoginActivity
+import com.rizkym.authreqres.ui.auth.LoginActivity
+import com.rizkym.authreqres.ui.main.MainActivity
+import com.rizkym.authreqres.ui.main.MainViewModel
+import com.rizkym.authreqres.ui.main.ViewModelFactory
 import com.rizkym.authreqres.utils.UserPreferences
-import com.rizkym.authreqres.utils.ViewModelFactory
 
 @SuppressLint("CustomSplashScreen")
 class SplashScreenActivity : AppCompatActivity() {
@@ -43,7 +45,7 @@ class SplashScreenActivity : AppCompatActivity() {
 
     private fun setupViewModel() {
         val pref = UserPreferences.getInstance(dataStore)
-        mainViewModel = ViewModelProvider(this, ViewModelFactory(pref))[MainViewModel::class.java]
+        mainViewModel = ViewModelProvider(this, ViewModelFactory(this, pref))[MainViewModel::class.java]
     }
 
     companion object {
