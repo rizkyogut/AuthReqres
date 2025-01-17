@@ -7,11 +7,14 @@ import androidx.room.RoomDatabase
 import com.rizkym.authreqres.network.response.DataItem
 
 @Database(
-    entities = [DataItem::class],
-    version = 1,
+    entities = [DataItem::class, RemoteKeys::class],
+    version = 3,
     exportSchema = false
 )
 abstract class UserDatabase : RoomDatabase() {
+
+    abstract fun userDao(): UserDao
+    abstract fun remoteKeysDao(): RemoteKeyDao
 
     companion object {
         @Volatile
